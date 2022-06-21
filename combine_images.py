@@ -6,7 +6,7 @@ from PIL import Image
 @click.option('--i', required=True, type=str,
               help='Имя файла с базовым изображением, расположенного в папке /input')
 @click.option('--o', required=True, type=str,
-              help='Имя файла с плашкой, расположенного в папке /input folder')
+              help='Имя файла с плашкой, расположенного в папке /overlay')
 @click.option('--r', required=True, type=str,
               help='Имя для нового файла с результатом, сохраняется в папке /result')
 @click.option('--m', default="overlay", type=str,
@@ -46,7 +46,7 @@ def load_images(i, o):
     try:
         overlay_image = Image.open(f'input/{o}').convert('RGBA')
     except FileNotFoundError:
-        raise click.BadParameter(message=f'Файл с плашкой с именем {o} в папке /input не найден.')
+        raise click.BadParameter(message=f'Файл с плашкой с именем {o} в папке /overlay не найден.')
     return base_image, overlay_image
 
 
