@@ -44,7 +44,7 @@ def load_images(i, o):
         raise click.BadParameter(message=f'Базовый файл с именем {i} в папке /input не найден.')
 
     try:
-        overlay_image = Image.open(f'input/{o}').convert('RGBA')
+        overlay_image = Image.open(f'overlay/{o}').convert('RGBA')
     except FileNotFoundError:
         raise click.BadParameter(message=f'Файл с плашкой с именем {o} в папке /overlay не найден.')
     return base_image, overlay_image
